@@ -29,18 +29,6 @@ kavirStone.menu.init = function () {
         },
         false
       );
-
-      const cartBtn = document.querySelector(".cart-btn");
-      cartBtn.addEventListener("click", function () {
-        document.querySelector("body").classList.add("blured");
-        document.querySelector(".side-cart").classList.add("active-cart");
-      });
-
-      const closeCart = document.querySelector(".close-cart");
-      closeCart.addEventListener("click", function () {
-        document.querySelector("body").classList.remove("blured");
-        document.querySelector(".side-cart").classList.remove("active-cart");
-      });
     }
 
     const smallLists = document.querySelectorAll(".has-children-sm");
@@ -58,10 +46,13 @@ kavirStone.menu.init = function () {
     if (toggleMenu.length) {
       toggleMenu.forEach(function (item) {
         item.addEventListener("click", function () {
-          document
-            .querySelector(".header__main__sm")
-            .classList.toggle("active");
-          document.querySelector("body").classList.toggle("blured");
+          const menu = document.querySelector(".header__main__sm");
+          const body = document.querySelector("body");
+          const btn = document.querySelector(".header__main__menu .toggle");
+
+          menu.classList.toggle("active");
+          body.classList.toggle("blured");
+          btn.classList.toggle("active");
         });
       });
     }
