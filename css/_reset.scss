@@ -1,19 +1,22 @@
+// https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557
+$primary_color: #1d3557;
+$secondary_color: #457b9d;
+$third_color: #a8dadc;
+$forth_color: #e63946;
+$bg_color: #f1faee;
 $black_color: #111;
-$white_color: #ffffff;
+$white_color: #fff;
 $light_bg: #f8fbfb;
 $dark_color: #212126;
 $gray_color: #38383f;
-$primary_color: #4361ee;
-$secondary_color: #3a0ca3;
-$third_color: #00ebcb;
 $blue_color: #4cc9f0;
+$border_color: #f0f0f5;
+$golden_color: #f7b31c;
 $dark_green: #157347;
 $light_green: #00cc99;
 $red_color: #e91e63;
 $text_color: #77797c;
 $white_text: #f8f1f1;
-$border_color: #f0f0f5;
-$golden_color: #f7b31c;
 //colors
 
 @mixin transition($duration: 0.4s, $mode: ease-out) {
@@ -238,8 +241,8 @@ section {
     background-color: #eeeeee !important;
   }
 
-  &.f5f5f5 {
-    background-color: #f5f5f5 !important;
+  &.color-bg {
+    background-color: $bg_color !important;
   }
 }
 
