@@ -60,7 +60,7 @@ body {
           }
 
           &.active {
-            background-color: $forth_color;
+            background-color: $third_color;
             @include transition;
 
             a {
@@ -68,7 +68,7 @@ body {
             }
 
             &:hover {
-              background-color: lighten($color: $forth_color, $amount: 5%);
+              background-color: lighten($color: $third_color, $amount: 5%);
             }
           }
 
@@ -499,7 +499,6 @@ footer {
       justify-content: space-between;
       align-items: center;
       max-width: 100vw;
-      overflow: hidden;
       margin-top: 1rem;
       padding: 0.5rem 0;
 
@@ -575,6 +574,214 @@ footer {
     .footer {
       &__social {
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.product {
+  &__list {
+    .item {
+      background-color: $bg_color;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+      display: block;
+      margin-bottom: 2rem;
+
+      .img-wrapper {
+        width: 100%;
+        height: 260px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include transition;
+        }
+
+        .border-wrapper {
+          width: calc(100% - 3rem);
+          height: calc(100% - 2rem);
+          position: absolute;
+          overflow: visible;
+          inset: 1rem 1.5rem;
+
+          .brd-1,
+          .brd-2 {
+            width: 90%;
+            height: 90%;
+            position: absolute;
+            display: block;
+            border: 3px solid $white_color;
+
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              width: calc(10% + 3px);
+              height: calc(10% + 3px);
+              border: 3px solid $white_color;
+            }
+          }
+
+          .brd-1 {
+            top: 0;
+            right: 0;
+            border-bottom: unset;
+            border-left: unset;
+
+            &::after {
+              left: calc(-10% - 2px);
+              top: -2px;
+              border-top: unset;
+              border-left: unset;
+            }
+          }
+
+          .brd-2 {
+            bottom: 0;
+            left: 0;
+            border-right: unset;
+            border-top: unset;
+
+            &::after {
+              right: calc(-10% - 2px);
+              bottom: -2px;
+              border-bottom: unset;
+              border-right: unset;
+            }
+          }
+        }
+      }
+
+      .content {
+        padding: 0.5rem;
+        background-color: $white_color;
+        position: relative;
+
+        .title {
+          color: $dark_color;
+          font-weight: 500;
+          font-size: 1.25em;
+          text-align: center;
+          display: block;
+          position: relative;
+          z-index: 2;
+          @include transition;
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          inset: 0;
+          background-color: $secondary_color;
+          z-index: 1;
+          transition: transform 0.4s ease-in-out;
+          transform: scaleX(0);
+          transform-origin: left;
+        }
+      }
+
+      &:hover {
+        .img-wrapper {
+          img {
+            transform: scale(1.25);
+          }
+        }
+
+        .content {
+          .title {
+            color: $white_color;
+          }
+
+          &::after {
+            transform-origin: right;
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.shared {
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pagination {
+      margin-bottom: 0;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+
+      & > li {
+        &.active a {
+          background-color: $primary_color;
+          border-color: $primary_color;
+          color: $white_color;
+        }
+
+        a {
+          color: $dark_color;
+        }
+
+        &:first-child > a > span,
+        &:last-child > a > span {
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  &__breadcrumb {
+    padding: 2rem 0;
+
+    &__main {
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      a {
+        color: $primary_color;
+        @include transition;
+
+        &:hover {
+          color: $secondary_color;
+
+          &::after {
+            color: $primary_color;
+          }
+        }
+
+        &::after {
+          content: "/";
+          margin: 0 0.25rem;
+        }
+      }
+    }
+
+    .title {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: $dark_color;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        background-image: url("../images/before.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom center;
+        transform: rotate(90deg);
+        margin-left: 0.5rem;
       }
     }
   }
