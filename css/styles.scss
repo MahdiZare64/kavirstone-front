@@ -706,6 +706,115 @@ footer {
   }
 }
 
+.blog {
+  &__list {
+    .item {
+      border: 1px solid $border_color;
+      background-color: $white_color;
+      margin-bottom: 2rem;
+
+      .img-wrapper {
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: relative;
+          z-index: 1;
+          @include transition;
+        }
+
+        .more-btn {
+          position: absolute;
+          background-color: #2b2b2b;
+          border: 1px solid $white_color;
+          color: $white_color;
+          opacity: 0.75;
+          border-radius: 5px;
+          top: calc(50% - 1.25rem);
+          left: calc(50% - 4rem);
+          width: 8rem;
+          height: 2.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 3;
+          @include transition;
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          z-index: 2;
+          @include transition;
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.25);
+          }
+
+          .more-btn {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          &::before {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: 0.5rem;
+
+        .title {
+          font-weight: 600;
+          font-size: 1.75em;
+          color: $dark_color;
+          @include transition;
+
+          &:hover {
+            color: $third_color;
+          }
+        }
+
+        .date {
+          font-weight: 300;
+          font-size: 0.9em;
+          color: $text_color;
+          margin-top: 0.5rem;
+        }
+
+        .desc {
+          @include truncate($line_num: 3);
+          font-weight: 400;
+          font-size: 1em;
+          color: $text_color;
+          border-top: 1px solid darken($color: $border_color, $amount: 25%);
+          margin-top: 0.5rem;
+          padding-top: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
 .shared {
   &__pagination {
     display: flex;
@@ -774,13 +883,12 @@ footer {
       &::before {
         content: "";
         display: inline-block;
-        width: 4rem;
+        width: 2rem;
         height: 4rem;
         background-image: url("../images/before.svg");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: bottom center;
-        transform: rotate(90deg);
         margin-left: 0.5rem;
       }
     }
