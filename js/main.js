@@ -61,6 +61,22 @@ kavirStone.menu.init = function () {
   }
 };
 
+kavirStone.lightGallery = kavirStone.lightGallery || {};
+kavirStone.lightGallery.init = function () {
+  try {
+    const gallery = document.getElementById("gallery-wrapper");
+
+    if (gallery) {
+      lightGallery(gallery, {
+        selector: "a",
+      });
+    }
+  } catch (e) {
+    console.log(`Error on kavirStone.lightGallery.init - ${e}`);
+  }
+};
+
 $(function () {
   kavirStone.menu.init();
+  kavirStone.lightGallery.init();
 });
