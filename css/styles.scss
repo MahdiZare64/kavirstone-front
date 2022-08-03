@@ -17,11 +17,13 @@ body {
 }
 
 .header {
+  min-height: 65px;
+  display: block;
+  width: 100%;
   &__main {
     max-width: 100vw;
     overflow-y: visible;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.02);
-    position: relative;
     z-index: 999;
     @include transition;
 
@@ -814,6 +816,215 @@ footer {
       }
     }
   }
+
+  &__details {
+    &__box {
+      background-color: $white_color;
+      padding: 1rem 1.5rem;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+
+      .blog__title {
+        font-weight: 600;
+        font-size: 1.8em;
+        color: $dark_color;
+        margin-bottom: 1rem;
+        display: inline;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 70%;
+          max-width: 15rem;
+          border-top: 3px solid $primary_color;
+          margin-top: 1rem;
+        }
+      }
+
+      .img {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0;
+      }
+
+      .title {
+        font-weight: 700;
+        font-size: 1.5em;
+        color: $dark_color;
+        margin-bottom: 1rem;
+      }
+
+      .desc {
+        font-weight: 400;
+        font-size: 1em;
+        color: $text_color;
+
+        &:not(:last-child) {
+          margin-bottom: 0.75rem;
+        }
+      }
+    }
+
+    &__comments {
+      &__wrapper {
+        padding-bottom: 1rem;
+
+        .container {
+          position: relative;
+          z-index: 5;
+        }
+
+        h2 {
+          font-weight: 700;
+        }
+      }
+
+      &__submit {
+        border-radius: 1rem;
+        padding: 1.75rem;
+        margin-bottom: 3rem;
+        background-color: #f5f5f5;
+        color: $text_color;
+        font-size: 1.1em;
+
+        textarea {
+          height: 120px;
+          margin: 1rem 0;
+          font-family: inherit;
+        }
+
+        a {
+          color: $primary_color;
+
+          &:hover {
+            color: $secondary_color;
+          }
+        }
+
+        b {
+          color: $primary_color;
+          font-weight: 500;
+        }
+
+        .close-reply {
+          margin-left: 0.5rem;
+          cursor: pointer;
+          @include transition;
+
+          &:hover {
+            color: #e91e63;
+          }
+        }
+      }
+
+      &__item {
+        position: relative;
+        border: 1px solid #ddd;
+        background-color: $white_color;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+
+        .reply {
+          position: absolute;
+          left: 1.5rem;
+          top: 1.5rem;
+          color: $primary_color;
+          background-color: transparent;
+          border: 1px solid $primary_color;
+          padding: 0.5rem 1rem;
+          font-weight: 300;
+          font-size: 90%;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          @include transition;
+
+          &:hover {
+            background-color: $primary_color;
+            color: $white_color;
+          }
+        }
+
+        .user-data {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-position: center;
+            margin-left: 15px;
+          }
+
+          p {
+            margin-bottom: 0;
+          }
+
+          .title {
+            font-weight: 500;
+            color: $dark_color;
+          }
+
+          .date {
+            font-weight: 200;
+            color: $text_color;
+          }
+        }
+
+        .content {
+          color: $dark_color;
+          font-weight: 300;
+          padding-right: 60px;
+
+          a {
+            color: $primary_color;
+          }
+        }
+
+        .bit_tv_single__comments__item {
+          margin-right: 60px;
+          border-radius: 0;
+          border: 0;
+          border-right: 3px solid #ddd;
+          margin-top: 3rem;
+          margin-bottom: 1.5rem;
+          padding-top: 0;
+          padding-bottom: 0;
+
+          .reply {
+            top: 0;
+          }
+
+          .content {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 576px) {
+        &__item {
+          padding: 1rem;
+
+          .content {
+            padding-right: 0;
+          }
+
+          .reply {
+            padding: 0.25rem 0.6rem;
+          }
+
+          .bit_tv_single__comments__item {
+            margin-right: 0;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .gallery {
@@ -946,6 +1157,52 @@ footer {
         background-position: bottom center;
         margin-left: 0.5rem;
       }
+    }
+  }
+}
+
+.custom-btn {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 0.75rem 1.25rem;
+  font-weight: 400;
+  font-size: 1em;
+  border-radius: 0;
+  border: 0;
+  background-color: $secondary_color;
+  color: $white_color;
+  @include transition;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    background: linear-gradient(
+      to bottom,
+      rgba(229, 172, 142, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(229, 172, 142, 0)
+    );
+    transform: rotateZ(60deg) translate(-6em, 300%);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $primary_color;
+    color: $white_color;
+
+    &::after {
+      animation: sheen 1.2s forwards;
+    }
+  }
+
+  @keyframes sheen {
+    100% {
+      transform: rotateZ(60deg) translate(2em, -300%);
     }
   }
 }
