@@ -4,6 +4,7 @@ kavirStone.menu = kavirStone.menu || {};
 kavirStone.menu.init = function () {
   try {
     const header = document.querySelector(".header__main");
+    const aside = document.querySelector(".blog__details__aside");
 
     if (header) {
       window.addEventListener(
@@ -16,6 +17,10 @@ kavirStone.menu.init = function () {
 
               setTimeout(function () {
                 header.classList.add("show");
+
+                if (aside) {
+                  aside.classList.add("with-header");
+                }
               }, 100);
             }
           } else {
@@ -23,6 +28,10 @@ kavirStone.menu.init = function () {
               header.classList.remove("show");
               setTimeout(function () {
                 header.classList.remove("fixed");
+
+                if (aside) {
+                  aside.classList.remove("with-header");
+                }
               }, 100);
             }
           }
